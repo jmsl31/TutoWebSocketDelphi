@@ -618,8 +618,8 @@ begin
     Request.CustomHeaders.AddValue('Origin', Format('http://%s:%d',[Host,Port]) );
     //ws://host:port/<resourcename>
     //about resourcename, see: http://dev.w3.org/html5/websockets/ "Parsing WebSocket URLs"
-    //sURL := Format('ws://%s:%d/%s', [Host, Port, WSResourceName]);
-    sURL := Format('http://%s:%d/%s', [Host, Port, WSResourceName]);
+    sURL := Format('ws://%s:%d/%s', [Host, Port, WSResourceName]);
+    //sURL := Format('http://%s:%d/%s', [Host, Port, WSResourceName]);
     ReadTimeout := Max(5 * 1000, ReadTimeout);
 
     { voorbeeld:

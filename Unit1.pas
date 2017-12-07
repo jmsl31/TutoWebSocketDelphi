@@ -47,21 +47,35 @@ begin
   client := TIdHTTPWebsocketClient.Create(nil);
   client.Port := 5010;
   client.Host := 'localhost';
-  if (client.Connected) then
-    try
-      client.Disconnect();
-      client.Connect;
-      LabelConnect.Caption := 'Client connecté';
-    Except
-      LabelConnect.Caption := 'Connection echoué';
-  end
-  else
-     try
-      client.Connect;
-      LabelConnect.Caption := 'Client connecté';
-    Except
-      LabelConnect.Caption := 'Connection echoué';
-    end;
+  client.WSResourceName := 'pepyt';
+  client.SocketIO.OnEvent(C_SERVER_EVENT,
+    procedure(const ASocket: ISocketIOContext; const aArgument: TSuperArray;
+      const aCallback: ISocketIOCallback)
+    begin
+      ShowMessageInMainthread('Data PUSHED from server: ' + aArgument
+        [0].AsJSon);
+      // server wants a response?
+      if aCallback <> nil then
+        aCallback.SendResponse('thank for the push!');
+    end);
+
+  // if (client.CheckConnection) then
+  // try
+  // client.Disconnect();
+  // client.Connect;
+  // LabelConnect.Caption := 'Client connecté';
+  // Except
+  // LabelConnect.Caption := 'Connection echoué';
+  // end
+  // else
+  // try
+  client.WSResourceName := 'logbook';
+  client.TryUpgradeToWebsocket;
+  // client.UpgradeToWebsocket;
+  // LabelConnect.Caption := 'Client connecté';
+  // Except
+  // LabelConnect.Caption := 'Connection echoué';
+  // end;
 
 end;
 

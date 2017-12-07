@@ -30,8 +30,5 @@ object Form1: TForm1
     Caption = 'Connect'
     TabOrder = 0
     OnClick = Button1Click
-    ExplicitLeft = 224
-    ExplicitTop = 128
-    ExplicitWidth = 75
   end
 end
