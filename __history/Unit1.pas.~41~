@@ -15,7 +15,6 @@ type
     Button1: TButton;
     LabelConnect: TLabel;
     procedure Button1Click(Sender: TObject);
-    procedure LabelConnectClick(Sender: TObject);
   private
     { Déclarations privées }
   public
@@ -46,13 +45,24 @@ end;
 procedure TForm1.Button1Click(Sender: TObject);
 begin
   client := TIdHTTPWebsocketClient.Create(nil);
-  client.Port := 55985;
+  client.Port := 5010;
   client.Host := 'localhost';
-  client.Connect;
-  if client.Connected then
-    LabelConnect.Caption :='Client connecté';
-    else
-    LabelConnect.Caption :=' Client non connecté';
+  if (client.Connected) then
+  begin
+    try
+      client.Disconnect();
+      client.Connect;
+      LabelConnect.Caption := 'Client connecté';
+    finally
+      LabelConnect.Caption := 'Connection echoué';
+  end
+  else
+     try
+      client.Connect;
+      LabelConnect.Caption := 'Client connecté';
+    finally
+      LabelConnect.Caption := 'Connection echoué';
+    end;
 
 end;
 
@@ -68,6 +78,5 @@ begin
   Result := JSON.AsString;
 
 end;
-
 
 end.

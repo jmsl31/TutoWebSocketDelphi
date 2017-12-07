@@ -47,17 +47,26 @@ begin
   client := TIdHTTPWebsocketClient.Create(nil);
   client.Port := 55985;
   client.Host := 'localhost';
-  client.Connect;
-  if client.Connected then
-    begin
-    client.Disconnect();
-    client.Connect;
-    LabelConnect.Caption :='Client connecté'
-    end
-    else
-    client.Connect;
-    LabelConnect.Caption :=' Client non connecté';
+  if (client.Connected) then
+  begin
+
+    try
+      client.Disconnect();
+      client.Connect;
+      LabelConnect.Caption := 'Client connecté';
+    finally
+      LabelConnect.Caption := 'Connection echoué';
     end;
+
+  end
+  else
+     try
+      client.Connect;
+      LabelConnect.Caption := 'Client connecté';
+    finally
+      LabelConnect.Caption := 'Connection echoué';
+    end;
+
 end;
 
 function GetValue(const AData: String; Key: String): String;
@@ -72,6 +81,5 @@ begin
   Result := JSON.AsString;
 
 end;
-
 
 end.

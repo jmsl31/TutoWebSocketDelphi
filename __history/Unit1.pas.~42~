@@ -45,16 +45,23 @@ end;
 procedure TForm1.Button1Click(Sender: TObject);
 begin
   client := TIdHTTPWebsocketClient.Create(nil);
-  client.Port := 55985;
+  client.Port := 5010;
   client.Host := 'localhost';
-  client.Connect;
-  if client.Connected then
-    client.Disconnect();
-    client.Connect;
-    LabelConnect.Caption :='Client connecté'
-    else
-    client.Connect;
-    LabelConnect.Caption :=' Client non connecté';
+  if (client.Connected) then
+    try
+      client.Disconnect();
+      client.Connect;
+      LabelConnect.Caption := 'Client connecté';
+    finally
+      LabelConnect.Caption := 'Connection echoué';
+  end
+  else
+     try
+      client.Connect;
+      LabelConnect.Caption := 'Client connecté';
+    finally
+      LabelConnect.Caption := 'Connection echoué';
+    end;
 
 end;
 
@@ -70,6 +77,5 @@ begin
   Result := JSON.AsString;
 
 end;
-
 
 end.

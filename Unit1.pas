@@ -45,25 +45,21 @@ end;
 procedure TForm1.Button1Click(Sender: TObject);
 begin
   client := TIdHTTPWebsocketClient.Create(nil);
-  client.Port := 55985;
+  client.Port := 5010;
   client.Host := 'localhost';
   if (client.Connected) then
-  begin
-
     try
       client.Disconnect();
       client.Connect;
       LabelConnect.Caption := 'Client connecté';
-    finally
+    Except
       LabelConnect.Caption := 'Connection echoué';
-    end;
-
   end
   else
      try
       client.Connect;
       LabelConnect.Caption := 'Client connecté';
-    finally
+    Except
       LabelConnect.Caption := 'Connection echoué';
     end;
 
