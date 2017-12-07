@@ -27,21 +27,31 @@ var
 
 const
   C_CLIENT_EVENT = 'CLIENT_TO_SERVER_EVENT_TEST';
+  C_SERVER_EVENT = 'SERVER_TO_CLIENT_EVENT_TEST';
 
 implementation
 
 {$R *.dfm}
 
+procedure ShowMessageInMainthread(const aMsg: string);
+begin
+  TThread.Synchronize(nil,
+    procedure
+    begin
+      ShowMessage(aMsg);
+    end);
+end;
+
 procedure TForm1.Button1Click(Sender: TObject);
 begin
   client := TIdHTTPWebsocketClient.Create(Self);
-  client.Port := 5010;
+  client.Port := 55985;
   client.Host := 'localhost';
   client.Connect;
 
 end;
 
-function GetValue(const AData: String;Key: String): String;
+function GetValue(const AData: String; Key: String): String;
 var
   JSON: ISuperObject;
   rowItem: ISuperObject;
@@ -50,7 +60,7 @@ begin
   ADataStringStream := TStringStream.Create(AData);
   JSON := TSuperObject.ParseStream(ADataStringStream, False);
 
-    Result := JSON.AsString;
+  Result := JSON.AsString;
 
 end;
 
