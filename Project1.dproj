@@ -312,6 +312,20 @@
             <Form>Form1</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="IdIOHandlerWebsocket.pas"/>
+        <DCCReference Include="IdServerBaseHandling.pas"/>
+        <DCCReference Include="IdServerIOHandlerWebsocket.pas"/>
+        <DCCReference Include="IdServerSocketIOHandling.pas"/>
+        <DCCReference Include="IdServerWebsocketContext.pas"/>
+        <DCCReference Include="IdServerWebsocketHandling.pas"/>
+        <DCCReference Include="IdSocketIOHandling.pas"/>
+        <DCCReference Include="IdWebsocketServer.pas"/>
+        <DCCReference Include="IdHTTPWebsocketClient.pas"/>
+        <DCCReference Include="..\TutoRestClient\supertimezone.pas"/>
+        <DCCReference Include="..\TutoRestClient\supertypes.pas"/>
+        <DCCReference Include="..\TutoRestClient\superxmlparser.pas"/>
+        <DCCReference Include="..\TutoRestClient\superdate.pas"/>
+        <DCCReference Include="..\TutoRestClient\superobject.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

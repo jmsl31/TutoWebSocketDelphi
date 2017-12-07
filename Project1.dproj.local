@@ -2,11 +2,25 @@
 <BorlandProject>
   <Transactions>
     <Transaction>2017/12/07 14:23:33.106,=C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\Unit1.pas</Transaction>
-    <Transaction>2017/12/07 14:24:14.588,C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\TutoWebSocket.fmx=C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\Unit1.fmx</Transaction>
     <Transaction>2017/12/07 14:24:14.588,C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\TutoWebSocket.pas=C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\Unit1.pas</Transaction>
+    <Transaction>2017/12/07 14:24:14.588,C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\TutoWebSocket.fmx=C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\Unit1.fmx</Transaction>
     <Transaction>2017/12/07 14:33:07.541,C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\Tutowebsockets\TutoWebSocket.fmx=C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\TutoWebSocket.fmx</Transaction>
     <Transaction>2017/12/07 14:33:07.541,C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\Tutowebsockets\TutoWebSocket.pas=C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\TutoWebSocket.pas</Transaction>
     <Transaction>2017/12/07 14:33:24.825,C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\Tutowebsockets\Project1.dproj=C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\Project1.dproj</Transaction>
+    <Transaction>2017/12/07 14:50:56.010,=C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\Tutowebsockets\IdIOHandlerWebsocket.pas</Transaction>
+    <Transaction>2017/12/07 14:50:56.012,=C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\Tutowebsockets\IdServerBaseHandling.pas</Transaction>
+    <Transaction>2017/12/07 14:50:56.014,=C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\Tutowebsockets\IdServerIOHandlerWebsocket.pas</Transaction>
+    <Transaction>2017/12/07 14:50:56.016,=C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\Tutowebsockets\IdServerSocketIOHandling.pas</Transaction>
+    <Transaction>2017/12/07 14:50:56.018,=C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\Tutowebsockets\IdServerWebsocketContext.pas</Transaction>
+    <Transaction>2017/12/07 14:50:56.021,=C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\Tutowebsockets\IdServerWebsocketHandling.pas</Transaction>
+    <Transaction>2017/12/07 14:50:56.024,=C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\Tutowebsockets\IdSocketIOHandling.pas</Transaction>
+    <Transaction>2017/12/07 14:50:56.027,=C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\Tutowebsockets\IdWebsocketServer.pas</Transaction>
+    <Transaction>2017/12/07 14:50:56.029,=C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\Tutowebsockets\IdHTTPWebsocketClient.pas</Transaction>
+    <Transaction>2017/12/07 14:52:03.323,=C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\TutoRestClient\supertimezone.pas</Transaction>
+    <Transaction>2017/12/07 14:52:03.326,=C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\TutoRestClient\supertypes.pas</Transaction>
+    <Transaction>2017/12/07 14:52:03.330,=C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\TutoRestClient\superxmlparser.pas</Transaction>
+    <Transaction>2017/12/07 14:52:03.334,=C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\TutoRestClient\superdate.pas</Transaction>
+    <Transaction>2017/12/07 14:52:03.337,=C:\Users\meisslj1\Documents\Embarcadero\Studio\Projets\TutoRestClient\superobject.pas</Transaction>
   </Transactions>
   <ActiveMobileDevice>   <NoProfile iOSSimulator="iPhone5"/>
   </ActiveMobileDevice>
