@@ -1,10 +1,10 @@
-unit TutoWebSocket;
+unit Unit1;
 
 interface
 
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs;
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs;
 
 type
   TForm1 = class(TForm)
@@ -19,6 +19,6 @@ var
 
 implementation
 
-{$R *.fmx}
+{$R *.dfm}
 
 end.
