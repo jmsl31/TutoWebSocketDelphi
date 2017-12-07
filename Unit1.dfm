@@ -13,4 +13,25 @@ object Form1: TForm1
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
+  object LabelConnect: TLabel
+    Left = 0
+    Top = 25
+    Width = 554
+    Height = 13
+    Align = alTop
+    ExplicitWidth = 3
+  end
+  object Button1: TButton
+    Left = 0
+    Top = 0
+    Width = 554
+    Height = 25
+    Align = alTop
+    Caption = 'Connect'
+    TabOrder = 0
+    OnClick = Button1Click
+    ExplicitLeft = 224
+    ExplicitTop = 128
+    ExplicitWidth = 75
+  end
 end
