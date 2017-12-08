@@ -16,11 +16,12 @@ type
     LabelPepyt: TLabel;
     LabelLogBook: TLabel;
     LabelInput: TLabel;
+    Memo1: TMemo;
     procedure Button1Click(Sender: TObject);
 
   private
-    procedure ClientBinDataReceived(const aData: TStream);
-    function ConnectServer(client : TIdHTTPWebsocketClient;Host : String;Port : Integer; WSResourceName: String):String;
+    procedure ClientBinDataReceived(const aData: String);
+    function ConnectServer(var client : TIdHTTPWebsocketClient;Host : String;Port : Integer; WSResourceName: String):String;
 
   public
     { Déclarations publiques }
@@ -59,21 +60,29 @@ begin
   LabelLogBook.Caption := 'Client LogBook ' +ConnectServer(clientDoc,'localhost',5010,'logbook');
   LabelInput.Caption := 'Client Input ' +ConnectServer(clientinput,'localhost',5010,'input');
 
-  clientPepyt.OnBinData := ClientBinDataReceived;
-  clientPepyt.IOHandler.Write('test');
+  clientDoc.OnTextData := ClientBinDataReceived;
+
 
 end;
 
 
-procedure TForm1.ClientBinDataReceived(const aData: TStream);
+procedure TForm1.ClientBinDataReceived(const aData: string);
+var
+  JSON: ISuperObject;
+  rowItem: ISuperObject;
+  ADataStringStream: TStringStream;
 begin
+  ADataStringStream := TStringStream.Create(aData);
+  JSON := TSuperObject.ParseStream(ADataStringStream, True);
 
+
+    Memo1.Lines.Add(JSON.AsString);
 end;
 
-function TForm1.ConnectServer(client : TIdHTTPWebsocketClient;Host : String;Port : Integer; WSResourceName: String):String;
+function TForm1.ConnectServer(var client : TIdHTTPWebsocketClient;Host : String;Port : Integer; WSResourceName: String):String;
 
 begin
-  client := TIdHTTPWebsocketClient.Create(nil);
+ // client := TIdHTTPWebsocketClient.Create(nil);
   client.Port := Port;
   client.Host := Host;
   client.WSResourceName := WSResourceName;
@@ -95,17 +104,17 @@ begin
     end;
 end;
 
-function GetValue(const aData: String; Key: String): String;
-var
-  JSON: ISuperObject;
-  rowItem: ISuperObject;
-  ADataStringStream: TStringStream;
-begin
-  ADataStringStream := TStringStream.Create(aData);
-  JSON := TSuperObject.ParseStream(ADataStringStream, False);
-
-  Result := JSON.AsString;
-
-end;
+//function GetValue(const aData: String; Key: String): String;
+//var
+//  JSON: ISuperObject;
+//  rowItem: ISuperObject;
+//  ADataStringStream: TStringStream;
+//begin
+//  ADataStringStream := TStringStream.Create(aData);
+//  JSON := TSuperObject.ParseStream(ADataStringStream, False);
+//
+//  Result := JSON.AsString;
+//
+//end;
 
 end.
