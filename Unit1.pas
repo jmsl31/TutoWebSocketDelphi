@@ -8,7 +8,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
 
   IdWebsocketServer, IdHTTPWebsocketClient, superobject, IdSocketIOHandling,
-  Vcl.StdCtrls;
+  Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls;
 
 type
   TForm1 = class(TForm)
@@ -16,12 +16,22 @@ type
     LabelPepyt: TLabel;
     LabelLogBook: TLabel;
     LabelInput: TLabel;
-    Memo1: TMemo;
+    Panel1: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
     procedure Button1Click(Sender: TObject);
 
   private
     procedure ClientBinDataReceived(const aData: String);
-    function ConnectServer(var client : TIdHTTPWebsocketClient;Host : String;Port : Integer; WSResourceName: String):String;
+    function ConnectServer(var client: TIdHTTPWebsocketClient; Host: String;
+      Port: Integer; WSResourceName: String): String;
 
   public
     { Déclarations publiques }
@@ -32,6 +42,7 @@ var
   clientPepyt: TIdHTTPWebsocketClient;
   clientDoc: TIdHTTPWebsocketClient;
   clientInput: TIdHTTPWebsocketClient;
+
 const
   C_CLIENT_EVENT = 'CLIENT_TO_SERVER_EVENT_TEST';
   C_SERVER_EVENT = 'SERVER_TO_CLIENT_EVENT_TEST';
@@ -55,38 +66,42 @@ begin
   clientDoc := TIdHTTPWebsocketClient.Create(nil);
   clientInput := TIdHTTPWebsocketClient.Create(nil);
 
-
-  LabelPepyt.Caption := 'Client Pepyt ' +ConnectServer(clientPepyt,'localhost',5010,'pepyt');
-  LabelLogBook.Caption := 'Client LogBook ' +ConnectServer(clientDoc,'localhost',5010,'logbook');
-  LabelInput.Caption := 'Client Input ' +ConnectServer(clientinput,'localhost',5010,'input');
+  LabelPepyt.Caption := 'Client Pepyt ' + ConnectServer(clientPepyt,
+    'localhost', 5010, 'pepyt');
+  LabelLogBook.Caption := 'Client LogBook ' + ConnectServer(clientDoc,
+    'localhost', 5010, 'logbook');
+  LabelInput.Caption := 'Client Input ' + ConnectServer(clientInput,
+    'localhost', 5010, 'input');
 
   clientDoc.OnTextData := ClientBinDataReceived;
 
-
 end;
-
 
 procedure TForm1.ClientBinDataReceived(const aData: string);
 var
   JSON: ISuperObject;
   rowItem: ISuperObject;
   ADataStringStream: TStringStream;
+  item: TSuperObjectIter;
 begin
   ADataStringStream := TStringStream.Create(aData);
   JSON := TSuperObject.ParseStream(ADataStringStream, True);
 
+  Label1.Caption := JSON.AsObject.S['event_type'];
 
-    Memo1.Lines.Add(JSON.AsString);
+  JSON.SaveTo('d:\server.txt', True);
+
 end;
 
-function TForm1.ConnectServer(var client : TIdHTTPWebsocketClient;Host : String;Port : Integer; WSResourceName: String):String;
+function TForm1.ConnectServer(var client: TIdHTTPWebsocketClient; Host: String;
+Port: Integer; WSResourceName: String): String;
 
 begin
- // client := TIdHTTPWebsocketClient.Create(nil);
+  // client := TIdHTTPWebsocketClient.Create(nil);
   client.Port := Port;
   client.Host := Host;
   client.WSResourceName := WSResourceName;
-   if (client.CheckConnection) then
+  if (client.CheckConnection) then
     try
       client.Disconnect();
       client.Connect;
@@ -104,17 +119,17 @@ begin
     end;
 end;
 
-//function GetValue(const aData: String; Key: String): String;
-//var
-//  JSON: ISuperObject;
-//  rowItem: ISuperObject;
-//  ADataStringStream: TStringStream;
-//begin
-//  ADataStringStream := TStringStream.Create(aData);
-//  JSON := TSuperObject.ParseStream(ADataStringStream, False);
+// function GetValue(const aData: String; Key: String): String;
+// var
+// JSON: ISuperObject;
+// rowItem: ISuperObject;
+// ADataStringStream: TStringStream;
+// begin
+// ADataStringStream := TStringStream.Create(aData);
+// JSON := TSuperObject.ParseStream(ADataStringStream, False);
 //
-//  Result := JSON.AsString;
+// Result := JSON.AsString;
 //
-//end;
+// end;
 
 end.

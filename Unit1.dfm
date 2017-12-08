@@ -47,13 +47,67 @@ object Form1: TForm1
     TabOrder = 0
     OnClick = Button1Click
   end
-  object Memo1: TMemo
-    Left = 168
-    Top = 104
-    Width = 185
-    Height = 89
-    Lines.Strings = (
-      'Memo1')
+  object Panel1: TPanel
+    Left = 0
+    Top = 64
+    Width = 554
+    Height = 225
+    Align = alClient
+    Caption = 'Panel1'
     TabOrder = 1
+    object Label1: TLabel
+      Left = 8
+      Top = 6
+      Width = 3
+      Height = 13
+    end
+    object Label2: TLabel
+      Left = 8
+      Top = 25
+      Width = 3
+      Height = 13
+    end
+    object Label3: TLabel
+      Left = 8
+      Top = 38
+      Width = 3
+      Height = 13
+    end
+    object Label4: TLabel
+      Left = 8
+      Top = 57
+      Width = 3
+      Height = 13
+    end
+    object Label5: TLabel
+      Left = 8
+      Top = 76
+      Width = 3
+      Height = 13
+    end
+    object Label6: TLabel
+      Left = 8
+      Top = 95
+      Width = 3
+      Height = 13
+    end
+    object Label7: TLabel
+      Left = 8
+      Top = 114
+      Width = 3
+      Height = 13
+    end
+    object Label8: TLabel
+      Left = 8
+      Top = 133
+      Width = 3
+      Height = 13
+    end
+    object Label9: TLabel
+      Left = 8
+      Top = 145
+      Width = 3
+      Height = 13
+    end
   end
 end
