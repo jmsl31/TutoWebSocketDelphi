@@ -13,25 +13,9 @@ object Form1: TForm1
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
-  object LabelPepyt: TLabel
+  object LabelConnect: TLabel
     Left = 0
     Top = 25
-    Width = 554
-    Height = 13
-    Align = alTop
-    ExplicitWidth = 3
-  end
-  object LabelLogBook: TLabel
-    Left = 0
-    Top = 51
-    Width = 554
-    Height = 28
-    Align = alTop
-    ExplicitTop = 144
-  end
-  object LabelInput: TLabel
-    Left = 0
-    Top = 38
     Width = 554
     Height = 13
     Align = alTop

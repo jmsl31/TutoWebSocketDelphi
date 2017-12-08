@@ -20,7 +20,7 @@ type
 
   private
     procedure ClientBinDataReceived(const aData: TStream);
-    function ConnectServer(client : TIdHTTPWebsocketClient;Host : String;Port : Integer; WSResourceName: String):String;
+    function ConnectServer(client : TIdHTTPWebsocketClient;Host : String;Port : String; WSResourceName: String):String;
 
   public
     { Déclarations publiques }
@@ -55,9 +55,9 @@ begin
   clientInput := TIdHTTPWebsocketClient.Create(nil);
 
 
-  LabelPepyt.Caption := 'Client Pepyt ' +ConnectServer(clientPepyt,'localhost',5010,'pepyt');
-  LabelLogBook.Caption := 'Client LogBook ' +ConnectServer(clientDoc,'localhost',5010,'logbook');
-  LabelInput.Caption := 'Client Input ' +ConnectServer(clientinput,'localhost',5010,'input');
+  LabelPepyt.Caption = ConnectServer(clientPepyt,'localhost',5010,'pepyt');
+  LabelLogBook.Caption = ConnectServer(clientDoc,'localhost',5010,'logbook');
+  LabelInput.Caption = ConnectServer(clientinput,'localhost',5010,'input');
 
   clientPepyt.OnBinData := ClientBinDataReceived;
   clientPepyt.IOHandler.Write('test');
@@ -70,7 +70,7 @@ begin
 
 end;
 
-function TForm1.ConnectServer(client : TIdHTTPWebsocketClient;Host : String;Port : Integer; WSResourceName: String):String;
+function ConnectServer(client : TIdHTTPWebsocketClient;Host : String;Port : String; WSResourceName: String):String;
 
 begin
   client := TIdHTTPWebsocketClient.Create(nil);

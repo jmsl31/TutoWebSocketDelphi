@@ -15,8 +15,9 @@ type
     Button1: TButton;
     LabelConnect: TLabel;
     procedure Button1Click(Sender: TObject);
+
   private
-    { Déclarations privées }
+    procedure ClientBinDataReceived(const aData: TStream);
   public
     { Déclarations publiques }
   end;
@@ -47,43 +48,53 @@ begin
   client := TIdHTTPWebsocketClient.Create(nil);
   client.Port := 5010;
   client.Host := 'localhost';
-  // if (client.CheckConnection) then
-  // try
-  // client.Disconnect();
-  // client.Connect;
-  // LabelConnect.Caption := 'Client connecté';
-  // Except
-  // LabelConnect.Caption := 'Connection echoué';
-  // end
-  // else
-  // try
-  client.WSResourceName := '/pepyt';
-  client.SocketIO.OnEvent(C_SERVER_EVENT,
-    procedure(const ASocket: ISocketIOContext; const aArgument: TSuperArray;
-      const aCallback: ISocketIOCallback)
-    begin
-      ShowMessageInMainthread('Data PUSHED from server: ' + aArgument
-        [0].AsJSon);
-      // server wants a response?
-      if aCallback <> nil then
-        aCallback.SendResponse('thank for the push!');
-    end);
-  client.Connect;
-//  client.UpgradeToWebsocket;
-  // LabelConnect.Caption := 'Client connecté';
-  // Except
-  // LabelConnect.Caption := 'Connection echoué';
-  // end;
+  client.WSResourceName := 'pepyt';
+
+  if (client.CheckConnection) then
+    try
+      client.Disconnect();
+      client.Connect;
+      LabelConnect.Caption := 'Client connecté';
+    Except
+      LabelConnect.Caption := 'Connection echoué';
+    end
+  else
+    try
+      client.WSResourceName := 'logbook';
+      client.UpgradeToWebsocket;
+      LabelConnect.Caption := 'Client connecté';
+    Except
+      LabelConnect.Caption := 'Connection echoué';
+    end;
+
+  client.OnBinData := ClientBinDataReceived;
+  client.IOHandler.Write('test');
 
 end;
 
-function GetValue(const AData: String; Key: String): String;
+
+procedure TForm1.ClientBinDataReceived(const aData: TStream);
+begin
+
+end;
+
+function ConnectServer(client : TIdHTTPWebsocketClient;Port : String;Host : String; WSResourceName: String)
+var
+begin
+  client := TIdHTTPWebsocketClient.Create(nil);
+  client.Port := Port;
+  client.Host := Host;
+  client.WSResourceName := WSResourceName;
+
+end;
+
+function GetValue(const aData: String; Key: String): String;
 var
   JSON: ISuperObject;
   rowItem: ISuperObject;
   ADataStringStream: TStringStream;
 begin
-  ADataStringStream := TStringStream.Create(AData);
+  ADataStringStream := TStringStream.Create(aData);
   JSON := TSuperObject.ParseStream(ADataStringStream, False);
 
   Result := JSON.AsString;

@@ -550,7 +550,8 @@ begin
       {$IFDEF WEBSOCKETSSL}
       sURL := Format('https://%s:%d/socket.io/1/', [Host, Port]);
       {$ELSE}
-      sURL := Format('http://%s:%d/socket.io/1/', [Host, Port]);
+      //sURL := Format('http://%s:%d/socket.io/1/', [Host, Port]);
+      sURL := Format('ws://%s:%d/%s', [Host, Port, WSResourceName]);
       {$ENDIF}
       strmResponse.Clear;
 
